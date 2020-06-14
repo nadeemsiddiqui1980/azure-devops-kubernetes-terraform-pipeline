@@ -36,8 +36,8 @@ jobs:
 
 - job: TestJob04
   dependsOn: 
-    TestJob02
-    TestJob03
+  - TestJob02
+  - TestJob03
   steps:
   - script: echo Hello, Nadeem Siddiqui - This is TestJob02!
     displayName: 'Run a one-line script'
