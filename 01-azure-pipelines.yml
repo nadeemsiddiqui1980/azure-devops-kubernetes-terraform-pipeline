@@ -23,8 +23,22 @@ jobs:
     displayName: 'Run a multi-line script'
 
 - job: TestJob02
+  dependsOn: TestJob01
   steps:
   - script: echo Hello, Nadeem Siddiqui - This is TestJob02!
     displayName: 'Run a one-line script'
 
+- job: TestJob03
+  dependsOn: TestJob01
+  steps:
+  - script: echo Hello, Nadeem Siddiqui - This is TestJob02!
+    displayName: 'Run a one-line script'
+
+- job: TestJob04
+  dependsOn: 
+    TestJob02
+    TestJob03
+  steps:
+  - script: echo Hello, Nadeem Siddiqui - This is TestJob02!
+    displayName: 'Run a one-line script'
 
