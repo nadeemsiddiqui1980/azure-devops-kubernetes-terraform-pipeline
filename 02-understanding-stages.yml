@@ -15,33 +15,40 @@ stages:
   - job: BuildFirstJob
     steps:
     - bash: echo BuildFirstJob!
+    - bash: echo $(PipelineLevel)
       displayName: 'Run a one-line script'
   - job: BuildSecoundJob
     steps:
     - bash: echo BuildSecoundJob!
       displayName: 'Run a one-line script'
 - stage: Dev
+  variables:
+   environment: Dev
   dependsOn: Build
   jobs:
   - job: DevFirstJob
     steps:
-    - bash: echo DevFirstJob!
+    - bash: echo $(environment)FirstJob!
       displayName: 'Run a one-line script'
 - stage: QA
+  variables:
+   environment: QA
   dependsOn: Build
   jobs:
   - job: QAFirstJob
     steps:
-    - bash: echo QAFirstJob!
+    - bash: echo $(environment)FirstJob!
       displayName: 'Run a one-line script'
 - stage: Prod
+  variables:
+   environment: Prod
   dependsOn: 
   - Dev
   - QA
   jobs:
   - job: ProdFirstJob
     steps:
-    - bash: echo PRODFirstJob!
+    - bash: echo $(environment)irstJob!
       displayName: 'Run a one-line script'
 
 
